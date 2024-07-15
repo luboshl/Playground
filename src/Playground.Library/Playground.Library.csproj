@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Title>Playground.Library Title</Title>
+        <Authors>Lubos Hladik</Authors>
+        <Description>This is Playground.Library</Description>
+        <Copyright>Copyright (c) Lubos Hladik 2024</Copyright>
+        <PackageProjectUrl>https://github.com/luboshl/Playground</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/luboshl/Playground/blob/main/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/luboshl/Playground</RepositoryUrl>
+        <RepositoryType>Playground repo</RepositoryType>
+        <PackageTags>playground nuget dotnet</PackageTags>
+        <PackageReleaseNotes>This is sample</PackageReleaseNotes>
+    </PropertyGroup>
+
+</Project>
