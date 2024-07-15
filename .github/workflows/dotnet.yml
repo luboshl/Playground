@@ -27,4 +27,4 @@ jobs:
     - name: Build
       run: dotnet build src/Playground.Library/Playground.Library.csproj --configuration Release --no-restore
     - name: Test
-      run: dotnet test src/Playground.Library/Playground.Library.csproj --configuration Release --no-buid --verbosity normal
+      run: dotnet test src/Playground.Library/Playground.Library.csproj --configuration Release --no-buid --no-restore
