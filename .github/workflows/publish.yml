@@ -1,0 +1,39 @@
+name: .NET
+
+on:
+  workflow_dispatch: # Allow running the workflow manually from the GitHub UI
+
+env:
+  NuGetDirectory: ${{ github.workspace}}/nuget
+  
+jobs:
+  nuget:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v4
+
+    - name: Display dotnet version
+      run: dotnet --version
+
+    - name: Restore
+      run: dotnet restore src/Playground.Library/Playground.Library.csproj
+
+    - name: Build
+      run: dotnet build src/Playground.Library/Playground.Library.csproj --configuration Release --no-restore
+
+    - name: Test
+      run: dotnet test src/Playground.Library/Playground.Library.csproj --configuration Release --no-build --no-restore
+
+    - name: Create NuGet package
+      run: dotnet pack src/Playground.Library/Playground.Library.csproj --configuration Release --no-build --no-restore --output ${{ env.NuGetDirectory }}
+
+    - name: Publish NuGet package
+      run: |
+        foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
+            dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+        }
