@@ -23,7 +23,7 @@ jobs:
     - name: Display dotnet version
       run: dotnet --version
     - name: Restore dependencies
-      run: dotnet restore src/Playground.Library/Playground.Library.csproj --configuration Release
+      run: dotnet restore src/Playground.Library/Playground.Library.csproj
     - name: Build
       run: dotnet build src/Playground.Library/Playground.Library.csproj --configuration Release --no-restore
     - name: Test
